@@ -3,6 +3,9 @@ package ch.tbz.project.util;
 import ch.tbz.project.model.*;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class ConsoleReader {
@@ -75,6 +78,30 @@ public class ConsoleReader {
         input = Time.valueOf(scan.nextLine());
       } catch (IllegalArgumentException illexargex) {
         System.out.println("Time format is invalid");
+        continue;
+      }
+
+      break;
+    }
+
+    return input;
+  }
+
+  /**
+   * Reads a Time and catches Exception. Asks until User has given a valid answer
+   *
+   * @param instruction Is the Instruction, also a question to the User
+   * @return input
+   */
+  public static LocalDateTime readLocalDateTime(String instruction) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy HH:mm");
+    LocalDateTime input;
+    while (true) {
+      try {
+        printInstruction(instruction + " --- " + "d-MM-yyyy HH:mm");
+        input = LocalDateTime.parse(scan.nextLine(), formatter);
+      } catch ( DateTimeParseException parseex) {
+        System.out.println("LocalDateTime format is invalid");
         continue;
       }
 

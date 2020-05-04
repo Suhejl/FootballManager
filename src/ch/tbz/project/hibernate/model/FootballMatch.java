@@ -25,6 +25,16 @@ public class FootballMatch  extends DataObject{
   public FootballMatch() {
   }
 
+  public FootballMatch(Team id_FirstTeam, Team id_SecondTeam,
+                       int firstTeamScore, int secondTeamScore, LocalDateTime matchdate, MatchState state) {
+    this.id_FirstTeam = id_FirstTeam;
+    this.id_SecondTeam = id_SecondTeam;
+    this.firstTeamScore = firstTeamScore;
+    this.secondTeamScore = secondTeamScore;
+    this.matchdate = matchdate;
+    this.state = state;
+  }
+
   public FootballMatch(int match_ID, Team id_FirstTeam, Team id_SecondTeam,
                        int firstTeamScore, int secondTeamScore, LocalDateTime matchdate, MatchState state) {
     this.match_ID = match_ID;
