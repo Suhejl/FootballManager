@@ -15,7 +15,7 @@ public final class DatabaseConnection {
   private static String databaseURL;
 
   public static void resetToDefaultDatabaseURL(){
-    setDatabaseURL("jdbc.url");
+    setDatabaseURL("jdbc.mariadburl");
   }
 
   public static void setNewDatabaseURL(String propertyKey){

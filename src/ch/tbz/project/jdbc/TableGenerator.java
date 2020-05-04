@@ -36,58 +36,58 @@ public class TableGenerator {
 
   public void createTrikotDesign() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS TrikotDesign (\n" +
-        "  TrikotDesign_ID INTEGER NOT NULL ,\n" +
+        "  TrikotDesign_ID INTEGER AUTO_INCREMENT NOT NULL ,\n" +
         "  Trikot_Color VARCHAR(45) NULL,\n" +
         "  Sponsor VARCHAR(45) NULL,\n" +
         "  Brand VARCHAR(45) NULL,\n" +
         "  PRIMARY KEY (TrikotDesign_ID))\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "TrikotDesign");
   }
 
   public void createTrikot() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS Trikot (\n" +
-        "  Trikot_ID INTEGER NOT NULL,\n" +
+        "  Trikot_ID INTEGER AUTO_INCREMENT NOT NULL,\n" +
         "  Name VARCHAR(45) NOT NULL,\n" +
-        "  ID_TrikotDesign INT NULL,\n" +
+        "  ID_TrikotDesign INTEGER NULL,\n" +
         "  PRIMARY KEY (Trikot_ID, Name),\n" +
         "  CONSTRAINT Constraint_ID_TrikotDesign_TrikotDesign_ID\n" +
         "    FOREIGN KEY (ID_TrikotDesign)\n" +
         "    REFERENCES TrikotDesign (TrikotDesign_ID)\n" +
         "    ON DELETE CASCADE\n" +
         "    ON UPDATE CASCADE)\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "Trikot");
   }
 
   public void createBoots() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS Boots (\n" +
-        "  Boots_ID INTEGER NOT NULL,\n" +
+        "  Boots_ID INTEGER AUTO_INCREMENT NOT NULL,\n" +
         "  Brand VARCHAR(45) NULL,\n" +
         "  Color VARCHAR(45) NULL,\n" +
         "  Size INT UNSIGNED NULL,\n" +
         "  PRIMARY KEY (Boots_ID))\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "Boots");
   }
 
   public void createTrainingPlan() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS TrainingPlan (\n" +
-        "  TrainingPlan_ID INTEGER NOT NULL,\n" +
-        "  TrainingStart DATETIME(8) NULL,\n" +
-        "  TrainingEnd DATETIME(8) NULL,\n" +
+        "  TrainingPlan_ID INTEGER AUTO_INCREMENT NOT NULL,\n" +
+        "  TrainingStart DATETIME NULL,\n" +
+        "  TrainingEnd DATETIME NULL,\n" +
         "  PRIMARY KEY (TrainingPlan_ID))\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "TrainingPlan");
   }
 
   public void createTeam() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS Team (\n" +
-        "  Team_ID INTEGER NOT NULL,\n" +
+        "  Team_ID INTEGER AUTO_INCREMENT NOT NULL,\n" +
         "  Teamname VARCHAR(45) NULL,\n" +
         "  ID_TrainingPlan INT NULL,\n" +
         "  ID_TrikotDesign INT NULL,\n" +
@@ -102,14 +102,14 @@ public class TableGenerator {
         "    REFERENCES TrikotDesign (TrikotDesign_ID)\n" +
         "    ON DELETE CASCADE\n" +
         "    ON UPDATE CASCADE)\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "Team");
   }
 
   public void createPlayer() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS Player (\n" +
-        "  Player_ID INTEGER NOT NULL,\n" +
+        "  Player_ID INTEGER AUTO_INCREMENT NOT NULL,\n" +
         "  Firstname VARCHAR(45) NULL,\n" +
         "  Lastname INT NULL,\n" +
         "  Age INT UNSIGNED NULL,\n" +
@@ -136,14 +136,14 @@ public class TableGenerator {
         "    REFERENCES Team (Team_ID)\n" +
         "    ON DELETE CASCADE\n" +
         "    ON UPDATE CASCADE)\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "Player");
   }
 
   public void createMatch() {
     String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS Match (\n" +
-        "  Match_ID INTEGER NOT NULL,\n" +
+        "  Match_ID INTEGER AUTO_INCREMENT NOT NULL,\n" +
         "  ID_Team1 INT NULL,\n" +
         "  ID_Team2 INT NULL,\n" +
         "  Matchdate DATETIME NULL,\n" +
@@ -158,7 +158,7 @@ public class TableGenerator {
         "    REFERENCES Team (Team_ID)\n" +
         "    ON DELETE CASCADE\n" +
         "    ON UPDATE CASCADE)\n" +
-        ";";
+        " ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     createTable(sqlCreateTableStatement, "Match");
   }

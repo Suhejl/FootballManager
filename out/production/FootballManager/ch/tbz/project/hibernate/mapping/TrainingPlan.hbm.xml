@@ -1,0 +1,9 @@
+<hibernate-mapping package="ch.tbz.project.hibernate">
+    <class name="ch.tbz.project.hibernate.model.TrainingPlan" table="TrainingPlan">
+        <id name="trainingPlan_ID" column="TrainingPlan_ID" access="field">
+            <generator class="increment"/>
+        </id>
+        <property name="trainingStart" column="TrainingStart" access="field" />
+        <property name="trainingEnd" column="TrainingEnd" access="field" />
+    </class>
+</hibernate-mapping>

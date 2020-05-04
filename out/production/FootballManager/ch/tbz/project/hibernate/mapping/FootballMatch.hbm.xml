@@ -1,0 +1,10 @@
+<hibernate-mapping package="ch.tbz.project.hibernate">
+    <class name="ch.tbz.project.hibernate.model.FootballMatch" table="FootballMatch">
+        <id name="match_ID" column="Match_ID" access="field">
+            <generator class="increment"/>
+        </id>
+        <property name="matchdate" column="Matchdate" access="field"/>
+        <many-to-one name="id_FirstTeam" column="ID_FirstTeam" access="field" lazy="false" fetch="select" />
+        <many-to-one name="id_SecondTeam" column="ID_SecondTeam" access="field" lazy="false" fetch="select" />
+    </class>
+</hibernate-mapping>

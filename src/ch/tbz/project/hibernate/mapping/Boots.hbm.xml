@@ -1,0 +1,21 @@
+<hibernate-mapping package="ch.tbz.project.hibernate">
+
+    <class name="ch.tbz.project.hibernate.model.Boots" table="Boots">
+        <id name="boots_ID" column="Boots_ID" access="field">
+            <generator class="increment"/>
+        </id>
+        <property name="brand" column="Brand" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Brand</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="color" column="Color" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Color</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="size" column="Size" access="field" />
+    </class>
+</hibernate-mapping>

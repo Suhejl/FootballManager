@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.url">jdbc:mariadb://192.168.99.100:3306/footballmanager?user=root&amp;password=mariadb</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MariaDB103Dialect</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">
+            org.hibernate.cache.internal.NoCachingRegionFactory
+        </property>
+
+        <!-- Create the database schema on startup if it's not already there -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <mapping resource="ch/tbz/project/hibernate/mapping/TrikotDesign.hbm.xml"/>
+<!--        <mapping class="ch.tbz.project.hibernate.model.Trikot"/>-->
+        <mapping resource="ch/tbz/project/hibernate/mapping/Trikot.hbm.xml"/>
+        <mapping resource="ch/tbz/project/hibernate/mapping/TrainingPlan.hbm.xml"/>
+        <mapping resource="ch/tbz/project/hibernate/mapping/Boots.hbm.xml"/>
+        <mapping resource="ch/tbz/project/hibernate/mapping/Team.hbm.xml"/>
+        <mapping resource="ch/tbz/project/hibernate/mapping/Player.hbm.xml"/>
+        <mapping resource="ch/tbz/project/hibernate/mapping/FootballMatch.hbm.xml"/>
+
+    </session-factory>
+
+</hibernate-configuration>

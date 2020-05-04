@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/FootballManager.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="FootballManagerMariaDb" uuid="34e54f93-30d0-4f4a-91b8-1355e5a8f98b">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://192.168.99.100:3306/footballmanager</jdbc-url>
+    </data-source>
   </component>
 </project>

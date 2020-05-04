@@ -1,0 +1,27 @@
+<hibernate-mapping package="ch.tbz.project.hibernate">
+    <class name="ch.tbz.project.hibernate.model.Player" table="Player">
+        <id name="player_ID" column="Player_ID" access="field">
+            <generator class="increment"/>
+        </id>
+        <property name="firstname" column="Firstname" access="field"/>
+        <property name="lastname" column="Lastname" access="field"/>
+        <property name="age" column="Age" access="field"/>
+        <property name="height_cm" column="Height_cm" access="field"/>
+        <property name="weight_kg" column="Weight_kg" access="field"/>
+        <property name="gender" column="Gender" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Gender</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="position" column="Position" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Position</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <many-to-one name="id_Trikot" column="ID_Trikot" access="field" lazy="false" fetch="select" />
+        <many-to-one name="id_Boots" column="ID_Boots" access="field" lazy="false" fetch="select" />
+        <many-to-one name="id_Team" column="ID_Team" access="field" lazy="false" fetch="select" />
+    </class>
+</hibernate-mapping>

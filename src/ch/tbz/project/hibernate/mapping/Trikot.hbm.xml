@@ -1,0 +1,9 @@
+<hibernate-mapping package="ch.tbz.project.hibernate">
+    <class name="ch.tbz.project.hibernate.model.Trikot" table="Trikot">
+        <id name="trikot_ID" column="trikot_id" access="field">
+            <generator class="increment"/>
+        </id>
+        <property name="name" column="Name" access="field"/>
+        <many-to-one name="id_TrikotDesign" column="ID_TrikotDesign" access="field" lazy="false" fetch="select" />
+    </class>
+</hibernate-mapping>

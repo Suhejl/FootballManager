@@ -1,0 +1,29 @@
+<hibernate-mapping package="ch.tbz.project.hibernate">
+
+    <class name="ch.tbz.project.hibernate.model.TrikotDesign" table="TrikotDesign">
+        <id name="trikotDesign_ID" column="TrikotDesign_ID" access="field">
+            <generator class="increment"/>
+        </id>
+        <property name="trikotColor" column="Trikot_Color" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Color</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="sponsor" column="Sponsor" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Sponsor</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="brand" column="Brand" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.Brand</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+    </class>
+
+
+
+</hibernate-mapping>
