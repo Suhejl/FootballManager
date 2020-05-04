@@ -6,36 +6,36 @@ import ch.tbz.project.hibernate.repo_interface.*;
 public class RepositoryWrapper implements IRepositoryWrapper {
   @Override
   public IBootsRepository getBootsRepository() {
-    return BootsRepositoryFactory.getBootsRepository();
+    return (IBootsRepository) RepositoryFactory.getRepository(BootsRepository.class.getSimpleName());
   }
 
   @Override
   public IMatchRepository getMatchRepository() {
-    return MatchRepositoryFactory.getMatchRepository();
+    return (IMatchRepository) RepositoryFactory.getRepository(FootballMatchRepository.class.getSimpleName());
   }
 
   @Override
   public IPlayerRepository getPlayerRepository() {
-    return PlayerRepositoryFactory.getPlayerRepository();
+    return (IPlayerRepository) RepositoryFactory.getRepository(PlayerRepository.class.getSimpleName());
   }
 
   @Override
   public ITeamRepository getTeamRepository() {
-    return TeamRepositoryFactory.getTeamRepository();
+    return (ITeamRepository) RepositoryFactory.getRepository(TeamRepository.class.getSimpleName());
   }
 
   @Override
   public ITrainingPlanRepository getTrainingPlanRepository() {
-    return TrainingPlanRepositoryFactory.getTrainingPlanRepository();
+    return (ITrainingPlanRepository) RepositoryFactory.getRepository(TrainingPlanRepository.class.getSimpleName());
   }
 
   @Override
   public ITrikotDesignRepository getTrikotDesignRepository() {
-    return TrikotDesignRepositoryFactory.getTrikotDesignRepository();
+    return (ITrikotDesignRepository) RepositoryFactory.getRepository(TrikotDesignRepository.class.getSimpleName());
   }
 
   @Override
   public ITrikotRepository getTrikotRepository() {
-    return TrikotRepositoryFactory.getTrikotRepository();
+    return (ITrikotRepository) RepositoryFactory.getRepository(TrikotRepository.class.getSimpleName());
   }
 }

@@ -5,6 +5,4 @@ import ch.tbz.project.hibernate.model.TrainingPlan;
 import java.util.List;
 
 public interface ITrainingPlanRepository extends IRepository<TrainingPlan> {
-  TrainingPlan read(int id);
-  List<TrainingPlan> list();
 }

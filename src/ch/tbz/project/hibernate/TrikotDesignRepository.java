@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class TrikotDesignPersister extends Persister<TrikotDesign> implements ITrikotDesignRepository {
+public class TrikotDesignRepository extends Repository<TrikotDesign> implements ITrikotDesignRepository {
 
   @Override
   public TrikotDesign read(int id) {

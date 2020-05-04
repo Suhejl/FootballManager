@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class TeamPersister extends Persister<Team> implements ITeamRepository {
+public class TeamRepository extends Repository<Team> implements ITeamRepository {
 
   @Override
   public Team read(int id) {

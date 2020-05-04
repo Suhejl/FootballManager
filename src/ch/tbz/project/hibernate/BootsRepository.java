@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class BootsPersister extends Persister<Boots> implements IBootsRepository {
+public class BootsRepository extends Repository<Boots> implements IBootsRepository {
 
   @Override
   public Boots read(int id) {

@@ -5,6 +5,4 @@ import ch.tbz.project.hibernate.model.Player;
 import java.util.List;
 
 public interface IPlayerRepository extends IRepository<Player> {
-  Player read(int id);
-  List<Player> list();
 }

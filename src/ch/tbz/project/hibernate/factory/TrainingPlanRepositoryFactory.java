@@ -1,6 +1,6 @@
 package ch.tbz.project.hibernate.factory;
 
-import ch.tbz.project.hibernate.TrainingPlanPersister;
+import ch.tbz.project.hibernate.TrainingPlanRepository;
 import ch.tbz.project.hibernate.repo_interface.ITrainingPlanRepository;
 
 public class TrainingPlanRepositoryFactory {
@@ -8,7 +8,7 @@ public class TrainingPlanRepositoryFactory {
 
   public static ITrainingPlanRepository getTrainingPlanRepository(){
     if (trainingPlanRepository == null) {
-      trainingPlanRepository = new TrainingPlanPersister();
+      trainingPlanRepository = new TrainingPlanRepository();
     }
     return trainingPlanRepository;
   }

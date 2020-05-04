@@ -11,10 +11,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.io.File;
 
-public abstract class Persister<T extends DataObject> implements IRepository<T> {
+public abstract class Repository<T extends DataObject> implements IRepository<T> {
   protected SessionFactory sessionFactory = null;
 
-  public Persister() {
+  public Repository() {
     File configFile = new File("hibernate.cfg.xml");
     StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
         .configure(configFile)

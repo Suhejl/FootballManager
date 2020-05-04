@@ -1,6 +1,6 @@
 package ch.tbz.project.hibernate.factory;
 
-import ch.tbz.project.hibernate.PlayerPersister;
+import ch.tbz.project.hibernate.PlayerRepository;
 import ch.tbz.project.hibernate.repo_interface.IPlayerRepository;
 
 public class PlayerRepositoryFactory {
@@ -8,7 +8,7 @@ public class PlayerRepositoryFactory {
 
   public static IPlayerRepository getPlayerRepository(){
     if (playerRepository == null) {
-      playerRepository = new PlayerPersister();
+      playerRepository = new PlayerRepository();
     }
     return playerRepository;
   }

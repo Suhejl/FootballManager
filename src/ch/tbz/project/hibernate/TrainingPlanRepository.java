@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class TrainingPlanPersister extends Persister<TrainingPlan> implements ITrainingPlanRepository {
+public class TrainingPlanRepository extends Repository<TrainingPlan> implements ITrainingPlanRepository {
 
   @Override
   public TrainingPlan read(int id) {

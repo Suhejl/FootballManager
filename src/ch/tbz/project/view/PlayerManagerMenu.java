@@ -21,7 +21,7 @@ public class PlayerManagerMenu implements IManagerMenu {
   }
 
   /**
-   * Display the question with Menu for Team Manager
+   * Display the question with Menu for Player Manager
    * Reads User Input for choice made
    */
   @Override
@@ -91,21 +91,6 @@ public class PlayerManagerMenu implements IManagerMenu {
     Boots boots = inputBoots();
 
     return new Player(firstname, lastname, age, height_cm, weight_kg, gender, position, null, boots, null);
-  }
-
-  /**
-   * User input to get Trikot data for creating a player
-   * It queries for the name
-   *
-   * @param trikotDesign The Trikot Design of the team
-   * @return new Instance of Trikot
-   */
-  private Trikot inputTrikot(TrikotDesign trikotDesign) {
-    String queryName = "What name should the Trikot display?";
-
-    String name = ConsoleReader.readString(queryName);
-
-    return new Trikot(name, trikotDesign);
   }
 
   /**

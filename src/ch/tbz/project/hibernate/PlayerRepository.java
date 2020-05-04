@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class PlayerPersister extends Persister<Player> implements IPlayerRepository {
+public class PlayerRepository extends Repository<Player> implements IPlayerRepository {
 
   @Override
   public Player read(int id) {

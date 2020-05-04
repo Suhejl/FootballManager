@@ -1,11 +1,8 @@
 package ch.tbz.project.view;
 
-import ch.tbz.project.hibernate.Persister;
 import ch.tbz.project.hibernate.factory.TrikotDesignRepositoryFactory;
-import ch.tbz.project.hibernate.model.TrikotDesign;
 import ch.tbz.project.hibernate.repo_interface.IRepository;
 import ch.tbz.project.util.ConsoleReader;
-import org.hibernate.persister.spi.PersisterFactory;
 
 import java.util.logging.Level;
 import java.util.logging.LogManager;

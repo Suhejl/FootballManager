@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class FootballMatchPersister extends Persister<FootballMatch> implements IMatchRepository {
+public class FootballMatchRepository extends Repository<FootballMatch> implements IMatchRepository {
 
   @Override
   public FootballMatch read(int id) {

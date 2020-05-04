@@ -1,6 +1,6 @@
 package ch.tbz.project.hibernate.factory;
 
-import ch.tbz.project.hibernate.TrikotPersister;
+import ch.tbz.project.hibernate.TrikotRepository;
 import ch.tbz.project.hibernate.repo_interface.ITrikotRepository;
 
 public class TrikotRepositoryFactory {
@@ -8,7 +8,7 @@ public class TrikotRepositoryFactory {
 
   public static ITrikotRepository getTrikotRepository(){
     if (trikotRepository == null) {
-      trikotRepository = new TrikotPersister();
+      trikotRepository = new TrikotRepository();
     }
     return trikotRepository;
   }

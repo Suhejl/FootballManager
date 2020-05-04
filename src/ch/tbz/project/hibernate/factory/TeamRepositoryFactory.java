@@ -1,8 +1,6 @@
 package ch.tbz.project.hibernate.factory;
 
-import ch.tbz.project.hibernate.PlayerPersister;
-import ch.tbz.project.hibernate.TeamPersister;
-import ch.tbz.project.hibernate.repo_interface.IPlayerRepository;
+import ch.tbz.project.hibernate.TeamRepository;
 import ch.tbz.project.hibernate.repo_interface.ITeamRepository;
 
 public class TeamRepositoryFactory {
@@ -10,7 +8,7 @@ public class TeamRepositoryFactory {
 
   public static ITeamRepository getTeamRepository(){
     if (teamRepository == null) {
-      teamRepository = new TeamPersister();
+      teamRepository = new TeamRepository();
     }
     return teamRepository;
   }

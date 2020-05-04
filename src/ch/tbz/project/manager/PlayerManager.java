@@ -5,7 +5,6 @@ import ch.tbz.project.hibernate.model.Player;
 import ch.tbz.project.hibernate.model.Team;
 import ch.tbz.project.hibernate.model.Trikot;
 import ch.tbz.project.hibernate.repo_interface.IRepositoryWrapper;
-import ch.tbz.project.util.ConsoleReader;
 
 import java.util.ArrayList;
 

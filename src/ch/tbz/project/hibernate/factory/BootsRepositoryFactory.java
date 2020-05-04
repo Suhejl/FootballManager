@@ -1,6 +1,6 @@
 package ch.tbz.project.hibernate.factory;
 
-import ch.tbz.project.hibernate.BootsPersister;
+import ch.tbz.project.hibernate.BootsRepository;
 import ch.tbz.project.hibernate.repo_interface.IBootsRepository;
 
 public class BootsRepositoryFactory {
@@ -8,7 +8,7 @@ public class BootsRepositoryFactory {
 
   public static IBootsRepository getBootsRepository(){
     if (bootsRepository == null) {
-      bootsRepository = new BootsPersister();
+      bootsRepository = new BootsRepository();
     }
     return bootsRepository;
   }

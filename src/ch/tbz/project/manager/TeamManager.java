@@ -4,7 +4,6 @@ import ch.tbz.project.hibernate.factory.RepositoryWrapperFactory;
 import ch.tbz.project.hibernate.model.Team;
 import ch.tbz.project.hibernate.repo_interface.IRepositoryWrapper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

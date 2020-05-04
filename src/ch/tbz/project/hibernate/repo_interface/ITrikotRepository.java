@@ -5,6 +5,4 @@ import ch.tbz.project.hibernate.model.Trikot;
 import java.util.List;
 
 public interface ITrikotRepository extends IRepository<Trikot> {
-  Trikot read(int id);
-  List<Trikot> list();
 }
