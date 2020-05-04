@@ -19,6 +19,11 @@ public class Trikot extends DataObject {
 
   public Trikot() { }
 
+  public Trikot(String name, TrikotDesign id_TrikotDesign) {
+    this.name = name;
+    this.id_TrikotDesign = id_TrikotDesign;
+  }
+
   public Trikot(Integer trikot_ID, String name, TrikotDesign id_TrikotDesign) {
     this.trikot_ID = trikot_ID;
     this.name = name;

@@ -27,6 +27,12 @@ public class TrikotDesign extends DataObject {
 
   public TrikotDesign(){ }
 
+  public TrikotDesign(Color trikotColor, Sponsor sponsor, Brand brand) {
+    this.trikotColor = trikotColor;
+    this.sponsor = sponsor;
+    this.brand = brand;
+  }
+
   public TrikotDesign(Integer trikotDesign_ID, Color trikotColor, Sponsor sponsor, Brand brand) {
     this.trikotDesign_ID = trikotDesign_ID;
     this.trikotColor = trikotColor;

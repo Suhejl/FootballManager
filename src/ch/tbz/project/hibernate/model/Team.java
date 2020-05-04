@@ -22,6 +22,12 @@ public class Team extends DataObject {
 
   public Team() { }
 
+  public Team(String teamname, TrainingPlan id_TrainingPlan, TrikotDesign id_TrikotDesign) {
+    this.teamname = teamname;
+    this.id_TrainingPlan = id_TrainingPlan;
+    this.id_TrikotDesign = id_TrikotDesign;
+  }
+
   public Team(int team_ID, String teamname, TrainingPlan id_TrainingPlan, TrikotDesign id_TrikotDesign) {
     this.team_ID = team_ID;
     this.teamname = teamname;

@@ -1,7 +1,7 @@
 package ch.tbz.project.hibernate.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Time;
 
 @Entity
 @Table(name = "TrainingPlan")
@@ -11,15 +11,20 @@ public class TrainingPlan extends DataObject {
   private int trainingPlan_ID;
 
   @Column(name = "TrainingStart")
-  private LocalDateTime trainingStart;
+  private Time trainingStart;
 
   @Column(name = "TrainingEnd")
-  private LocalDateTime trainingEnd;
+  private Time trainingEnd;
 
   public TrainingPlan() {
   }
 
-  public TrainingPlan(int trainingPlan_ID, LocalDateTime trainingStart, LocalDateTime trainingEnd) {
+  public TrainingPlan(Time trainingStart, Time trainingEnd) {
+    this.trainingStart = trainingStart;
+    this.trainingEnd = trainingEnd;
+  }
+
+  public TrainingPlan(int trainingPlan_ID, Time trainingStart, Time trainingEnd) {
     this.trainingPlan_ID = trainingPlan_ID;
     this.trainingStart = trainingStart;
     this.trainingEnd = trainingEnd;
@@ -33,19 +38,19 @@ public class TrainingPlan extends DataObject {
     this.trainingPlan_ID = trainingPlan_ID;
   }
 
-  public LocalDateTime getTrainingStart() {
+  public Time getTrainingStart() {
     return trainingStart;
   }
 
-  public void setTrainingStart(LocalDateTime trainingStart) {
+  public void setTrainingStart(Time trainingStart) {
     this.trainingStart = trainingStart;
   }
 
-  public LocalDateTime getTrainingEnd() {
+  public Time getTrainingEnd() {
     return trainingEnd;
   }
 
-  public void setTrainingEnd(LocalDateTime trainingEnd) {
+  public void setTrainingEnd(Time trainingEnd) {
     this.trainingEnd = trainingEnd;
   }
 }

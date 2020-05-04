@@ -1,38 +1,38 @@
-package ch.tbz.project;
+package ch.tbz.project.view;
 
-import ch.tbz.project.hibernate.*;
-import ch.tbz.project.hibernate.factory.RepositoryWrapperFactory;
-import ch.tbz.project.hibernate.model.Boots;
-import ch.tbz.project.hibernate.model.FootballMatch;
-import ch.tbz.project.hibernate.model.Player;
-import ch.tbz.project.hibernate.model.Team;
-import ch.tbz.project.hibernate.model.TrainingPlan;
-import ch.tbz.project.hibernate.model.Trikot;
+import ch.tbz.project.hibernate.Persister;
+import ch.tbz.project.hibernate.factory.TrikotDesignRepositoryFactory;
 import ch.tbz.project.hibernate.model.TrikotDesign;
-import ch.tbz.project.hibernate.repo_interface.IRepositoryWrapper;
-import ch.tbz.project.jdbc.TableGenerator;
-import ch.tbz.project.model.*;
+import ch.tbz.project.hibernate.repo_interface.IRepository;
+import ch.tbz.project.util.ConsoleReader;
+import org.hibernate.persister.spi.PersisterFactory;
 
-import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 
 public class Main {
 
-  public static void main(String[] args) throws SQLException {
+  public static void main(String[] args) {
+    LogManager.getLogManager().getLogger("").setLevel(Level.SEVERE);
+    IRepository repository = TrikotDesignRepositoryFactory.getTrikotDesignRepository();
+
+    boolean isRunning = true;
+    while (isRunning) {
+      System.out.println("Choose what to manage");
+
+      String menu =
+          "[1] Manage Player\n" +
+              "[2] Manage Team\n" +
+              "[3] Manage Match\n" +
+              "[0] Exit\n\n";
+
+      int choice = ConsoleReader.readInteger(menu);
+      isRunning = navigateToManager(choice);
+    }
 
 
-
-
-
-
-
-
-
-
-
- /*   TableGenerator tableGenerator = new TableGenerator();
-*//*    TrikotDesignPersister trikotDesignPersister = new TrikotDesignPersister();
+    /*   TableGenerator tableGenerator = new TableGenerator();
+     *//*    TrikotDesignPersister trikotDesignPersister = new TrikotDesignPersister();
     TrikotPersister trikotPersister = new TrikotPersister();
     TrainingPlanPersister trainingPlanPersister = new TrainingPlanPersister();
     BootsPersister bootsPersister = new BootsPersister();
@@ -101,5 +101,32 @@ public class Main {
     footballMatch.setMatchdate(LocalDateTime.of(2020, 05, 06, 15, 00, 00));
     repositoryWrapper.getMatchRepository().create(footballMatch);
     FootballMatch getFootballMatch = repositoryWrapper.getMatchRepository().read(1);*/
+  }
+
+  /**
+   * Navigates to Manager Menu by choice made
+   * And returns boolean if menu should show up again
+   *
+   * @param choice
+   * @return boolean if menu should show up again
+   */
+  private static boolean navigateToManager(int choice) {
+    switch (choice) {
+      case 1:
+        new PlayerManagerMenu();
+        break;
+      case 2:
+        new TeamManagerMenu().menu();
+        break;
+      case 3:
+        new MatchManagerMenu();
+        break;
+      case 0:
+        return false;
+      default:
+        System.out.println("Choice invalid");
+        break;
+    }
+    return true;
   }
 }

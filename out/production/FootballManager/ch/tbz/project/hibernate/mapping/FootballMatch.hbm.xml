@@ -4,6 +4,14 @@
             <generator class="increment"/>
         </id>
         <property name="matchdate" column="Matchdate" access="field"/>
+        <property name="firstTeamScore" column="FirstTeamScore" access="field"/>
+        <property name="secondTeamScore" column="SecondTeamScore" access="field"/>
+        <property name="state" column="State" access="field">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ch.tbz.project.model.MatchState</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
         <many-to-one name="id_FirstTeam" column="ID_FirstTeam" access="field" lazy="false" fetch="select" />
         <many-to-one name="id_SecondTeam" column="ID_SecondTeam" access="field" lazy="false" fetch="select" />
     </class>

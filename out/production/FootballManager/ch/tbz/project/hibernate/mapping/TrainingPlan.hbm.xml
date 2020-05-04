@@ -3,7 +3,7 @@
         <id name="trainingPlan_ID" column="TrainingPlan_ID" access="field">
             <generator class="increment"/>
         </id>
-        <property name="trainingStart" column="TrainingStart" access="field" />
-        <property name="trainingEnd" column="TrainingEnd" access="field" />
+        <property name="trainingStart" column="TrainingStart" type="time" access="field" />
+        <property name="trainingEnd" column="TrainingEnd" type="time" access="field" />
     </class>
 </hibernate-mapping>
