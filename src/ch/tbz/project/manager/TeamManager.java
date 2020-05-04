@@ -4,6 +4,7 @@ import ch.tbz.project.hibernate.factory.RepositoryWrapperFactory;
 import ch.tbz.project.hibernate.model.Team;
 import ch.tbz.project.hibernate.repo_interface.IRepositoryWrapper;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +37,9 @@ public class TeamManager {
       teamnames.add(team.getTeamname());
     }
     return teamnames;
+  }
+
+  public ArrayList<Team> getTeams(){
+    return (ArrayList<Team>) repositoryWrapper.getTeamRepository().list();
   }
 }

@@ -51,6 +51,29 @@ public class Player extends DataObject {
   }
 
   public Player(
+      String firstname,
+      String lastname,
+      int age,
+      int height_cm,
+      int weight_kg,
+      Gender gender,
+      Position position,
+      Trikot id_Trikot,
+      Boots id_Boots,
+      Team id_Team) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.age = age;
+    this.height_cm = height_cm;
+    this.weight_kg = weight_kg;
+    this.gender = gender;
+    this.position = position;
+    this.id_Trikot = id_Trikot;
+    this.id_Boots = id_Boots;
+    this.id_Team = id_Team;
+  }
+
+  public Player(
       int player_ID,
       String firstname,
       String lastname,

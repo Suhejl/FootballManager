@@ -15,7 +15,7 @@ import java.sql.Time;
 /**
  * Handles the User Inputs for the TeamManager
  */
-public class TeamManagerMenu {
+public class TeamManagerMenu implements IManagerMenu {
   TeamManager teamManager;
 
   public TeamManagerMenu() {
@@ -26,6 +26,7 @@ public class TeamManagerMenu {
    * Display the question with Menu for Team Manager
    * Reads User Input for choice made
    */
+  @Override
   public void menu() {
     String question = "What do you want to do?";
     String menu = optionsMenu();

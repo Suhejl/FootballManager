@@ -111,22 +111,24 @@ public class Main {
    * @return boolean if menu should show up again
    */
   private static boolean navigateToManager(int choice) {
+    IManagerMenu managerMenu;
     switch (choice) {
       case 1:
-        new PlayerManagerMenu();
+       managerMenu = new PlayerManagerMenu();
         break;
       case 2:
-        new TeamManagerMenu().menu();
+        managerMenu = new TeamManagerMenu();
         break;
       case 3:
-        new MatchManagerMenu();
+        managerMenu = new MatchManagerMenu();
         break;
       case 0:
         return false;
       default:
         System.out.println("Choice invalid");
-        break;
+        return true;
     }
+    managerMenu.menu();
     return true;
   }
 }

@@ -26,6 +26,12 @@ public class Boots extends DataObject {
   public Boots() {
   }
 
+  public Boots(Brand brand, Color color, int size) {
+    this.brand = brand;
+    this.color = color;
+    this.size = size;
+  }
+
   public Boots(int boots_ID, Brand brand, Color color, int size) {
     this.boots_ID = boots_ID;
     this.brand = brand;

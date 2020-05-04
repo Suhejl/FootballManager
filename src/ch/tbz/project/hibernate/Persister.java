@@ -27,14 +27,18 @@ public abstract class Persister<T extends DataObject> implements IRepository<T> 
 
   @Override
   public void create(T dataObject) {
-    update(dataObject);
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    session.save(dataObject);
+    session.getTransaction().commit();
+    session.close();
   }
 
   @Override
   public void update(T dataObject) {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    session.save(dataObject);
+    session.update(dataObject);
     session.getTransaction().commit();
     session.close();
   }
