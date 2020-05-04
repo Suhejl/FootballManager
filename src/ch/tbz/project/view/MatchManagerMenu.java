@@ -93,6 +93,7 @@ public class MatchManagerMenu implements IManagerMenu {
         break;
       case 0:
         menu();
+        break;
       default:
         System.out.println("Choice is invalid");
         organizeMatch();
@@ -250,7 +251,7 @@ public class MatchManagerMenu implements IManagerMenu {
     List<FootballMatch> matchesToPlay = matchManager.getMatchesToPlay();
 
     if(matchesToPlay.isEmpty()) {
-      System.out.println("Sorry, there are no cancelled matches");
+      System.out.println("Sorry, there are no matches to play");
       return;
     }
 
@@ -266,7 +267,7 @@ public class MatchManagerMenu implements IManagerMenu {
     List<FootballMatch> matchesPlayed = matchManager.getPlayedMatches();
 
     if(matchesPlayed.isEmpty()) {
-      System.out.println("Sorry, there are no cancelled matches");
+      System.out.println("Sorry, there are no played matches");
       return;
     }
 
@@ -295,10 +296,15 @@ public class MatchManagerMenu implements IManagerMenu {
   }
 
   private void displayAllMatches() {
-    List<FootballMatch> cancelledMatches = matchManager.getFootballMatches();
+    List<FootballMatch> allMatches = matchManager.getFootballMatches();
+
+    if(allMatches.isEmpty()) {
+      System.out.println("Sorry, there are no matches");
+      return;
+    }
 
     int i = 1;
-    for (FootballMatch match : cancelledMatches) {
+    for (FootballMatch match : allMatches) {
       System.out.println("[" + i + "]\t" + match.getId_FirstTeam().getTeamname() + " vs " + match.getId_SecondTeam().getTeamname()
           + " ---- " + match.getMatchdate().toString());
       i++;

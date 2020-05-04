@@ -123,7 +123,7 @@ public class PlayerManagerMenu implements IManagerMenu {
     while (true) {
       int i = 1;
       for (Player p : players) {
-        System.out.println("[" + i + "]" + p.getFirstname() + " " + p.getLastname() +
+        System.out.println("[" + i + "]\t" + p.getFirstname() + " " + p.getLastname() +
             " --- " + p.getGender() + " --- " + p.getPosition());
         i++;
       }
@@ -155,7 +155,7 @@ public class PlayerManagerMenu implements IManagerMenu {
     while (true) {
       int i = 1;
       for (Team t : teams) {
-        System.out.println("[" + i + "]" + t.getTeamname());
+        System.out.println("[" + i + "]\t" + t.getTeamname());
         i++;
       }
 

@@ -77,7 +77,7 @@ public class TeamManagerMenu implements IManagerMenu {
 
     TrainingPlan trainingPlan = inputTrainingPlanData();
     TrikotDesign trikotDesign = inputTrikotDesign();
-
+    System.out.println("Team was successfully created");
     return new Team(teamname, trainingPlan, trikotDesign);
   }
 
