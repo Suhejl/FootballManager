@@ -2,7 +2,7 @@ package ch.tbz.project.model;
 
 public enum Position {
   GOALKEEPER,
-  BACK,
+  DEFENDER,
   MIDFIELDER,
   STRIKER,
   PLAYMAKER

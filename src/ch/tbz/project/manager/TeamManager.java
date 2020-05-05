@@ -20,10 +20,6 @@ public class TeamManager {
     repositoryWrapper.getTeamRepository().create(team);
   }
 
-  public void organizeTeam(){
-
-  }
-
   /**
    * Queries all Teamnames from database
    * @return All Teamnames

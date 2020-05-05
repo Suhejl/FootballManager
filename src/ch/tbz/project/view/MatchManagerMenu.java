@@ -63,6 +63,9 @@ public class MatchManagerMenu implements IManagerMenu {
       case 0:
         return;
       default:
+        System.out.println("Invalid input");
+        menu();
+        break;
     }
   }
 
@@ -77,6 +80,10 @@ public class MatchManagerMenu implements IManagerMenu {
     executeChoice(choice);
   }
 
+  /**
+   * Executes the choice made in organizing the match
+   * @param choice choice made in previous method
+   */
   private void executeChoice(int choice) {
     switch (choice) {
       case 1:
@@ -92,17 +99,23 @@ public class MatchManagerMenu implements IManagerMenu {
         organizeMatch();
         break;
       case 0:
-        menu();
         break;
       default:
         System.out.println("Choice is invalid");
         organizeMatch();
+        break;
     }
   }
 
+  /**
+   * Asks the user for match data to create a match
+   * If there are less than 2 teams, a match can't be created
+   * If the matchDate overlaps with the training of the selected team, the match can't be created
+   *
+   * */
   private void createMatch() {
-    if (teamManager.getTeams().isEmpty() || teamManager.getTeams().size() < 2) {
-      System.out.println("Sorry, but there are not enough teams to organize a match");
+    if (teamManager.getTeams().size() < 2) {
+      System.out.println("Sorry, but there are not enough teams to create a match");
       return;
     }
 
@@ -115,8 +128,8 @@ public class MatchManagerMenu implements IManagerMenu {
     while (true) {
       if (ConsoleReader.readInteger("Enter a number 0 or below if you want to leave now") < 1) organizeMatch();
 
-      firstTeam = selectFirstTeam(teams, matchDate);
-      secondTeam = selectSecondTeam(teams, matchDate);
+      firstTeam = selectTeam(teams, matchDate, "Choose First Team to add to the match");
+      secondTeam = selectTeam(teams, matchDate, "Choose Second Team to add to the match");
 
       if (firstTeam.getTeam_ID() == secondTeam.getTeam_ID()) {
         System.out.println("Please select two different Teams");
@@ -131,13 +144,21 @@ public class MatchManagerMenu implements IManagerMenu {
     System.out.println("Match created successfully");
   }
 
-  private Team selectFirstTeam(ArrayList<Team> teams, LocalDateTime matchDate) {
+  /**
+   * Selects a team with a query to the User to create a match. It checks the team's training sessions, if it overlaps with the matchDate.
+   * If so, user has to select different team.
+   * @param teams all the teams in the database
+   * @param matchDate matchDate
+   * @param queryChooseTeam the question asked or the query to the user
+   * @return selected team
+   */
+  private Team selectTeam(ArrayList<Team> teams, LocalDateTime matchDate, String queryChooseTeam) {
     Team firstTeam;
     while (true) {
+      if (ConsoleReader.readInteger("Enter a number 0 or below if you want to leave now") < 1) organizeMatch();
       displayTeams();
 
-      String queryChooseFirstTeam = "Choose First Team to add to the match";
-      int indexFirstTeam = ConsoleReader.readInteger(queryChooseFirstTeam);
+      int indexFirstTeam = ConsoleReader.readInteger(queryChooseTeam);
 
       try {
         firstTeam = teams.get(indexFirstTeam - 1);
@@ -160,37 +181,13 @@ public class MatchManagerMenu implements IManagerMenu {
 
   }
 
-  private Team selectSecondTeam(ArrayList<Team> teams, LocalDateTime matchDate) {
-    Team secondTeam;
-    while (true) {
-      displayTeams();
-
-      String queryChooseSecondTeam = "Choose Second Team to add to the match";
-      int indexSecondTeam = ConsoleReader.readInteger(queryChooseSecondTeam);
-
-      try {
-        secondTeam = teams.get(indexSecondTeam - 1);
-      } catch (IndexOutOfBoundsException inex) {
-        System.out.println("Invalid index. Team with index " + indexSecondTeam + " does not exist");
-        continue;
-      }
-
-      LocalTime secondTeamTrainingStart = secondTeam.getID_TrainingPlan().getTrainingStart().toLocalTime().minusMinutes(15);
-      LocalTime secondTeamTrainingEnd = secondTeam.getID_TrainingPlan().getTrainingEnd().toLocalTime().plusMinutes(15);
-
-      if (matchDate.toLocalTime().isAfter(secondTeamTrainingStart) && matchDate.toLocalTime().isBefore(secondTeamTrainingEnd)) {
-        System.out.println("The team can't be selected, since the match date clashes with its training");
-        continue;
-      }
-
-      break;
-    }
-
-    return secondTeam;
-  }
-
+  /**
+   * Collects the user input and data to play a match
+   * The score for the teams needs to be between 0 and 100, to be realistic
+   * MatchStatus gets updated from TO_PLAY to PLAYED
+   */
   private void playMatch() {
-    navigateToOrganizeMatchIfNoMatchesToPlay();
+    if(noMatchesToPlay()) return;;
 
     List<FootballMatch> matchesToPlay = matchManager.getMatchesToPlay();
 
@@ -214,8 +211,12 @@ public class MatchManagerMenu implements IManagerMenu {
     System.out.println("Match has been successfully played");
   }
 
+  /**
+   * Select a match that needs to be played, so that it can be cancelled
+   * MatchStatus updates from TO_PLAY to CANCELLED
+   */
   private void cancelMatch() {
-    navigateToOrganizeMatchIfNoMatchesToPlay();
+    if(noMatchesToPlay()) return;
 
     List<FootballMatch> matchesToPlay = matchManager.getMatchesToPlay();
 
@@ -226,13 +227,18 @@ public class MatchManagerMenu implements IManagerMenu {
     System.out.println("Match has been successfully cancelled");
   }
 
+  /**
+   * User selects a match from the matches to play
+   * @param matchesToPlay matches to play
+   * @param queryToUser query to user
+   * @return match
+   */
   private FootballMatch selectMatch(List<FootballMatch> matchesToPlay, String queryToUser) {
     FootballMatch match;
 
     while (true) {
       displayMatchesToPlay();
 
-      String queryChooseMatch = "Choose Match to play";
       int indexMatchToPlay = ConsoleReader.readInteger(queryToUser);
 
       try {
@@ -247,6 +253,9 @@ public class MatchManagerMenu implements IManagerMenu {
     return match;
   }
 
+  /**
+   * Displays the matches that needs to be played
+   */
   private void displayMatchesToPlay() {
     List<FootballMatch> matchesToPlay = matchManager.getMatchesToPlay();
 
@@ -263,6 +272,9 @@ public class MatchManagerMenu implements IManagerMenu {
     }
   }
 
+  /**
+   * Displays the matches that has been played
+   */
   private void displayPlayedMatches() {
     List<FootballMatch> matchesPlayed = matchManager.getPlayedMatches();
 
@@ -279,6 +291,9 @@ public class MatchManagerMenu implements IManagerMenu {
     }
   }
 
+  /**
+   * Displays the matches that has been cancelled
+   */
   private void displayCancelledMatches() {
     List<FootballMatch> cancelledMatches = matchManager.getCancelledMatches();
 
@@ -295,6 +310,10 @@ public class MatchManagerMenu implements IManagerMenu {
     }
   }
 
+  /**
+   * Displays all matches
+   * Returns error message if there are no matches
+   */
   private void displayAllMatches() {
     List<FootballMatch> allMatches = matchManager.getFootballMatches();
 
@@ -321,15 +340,16 @@ public class MatchManagerMenu implements IManagerMenu {
     }
   }
 
-  private void navigateToOrganizeMatchIfNoMatchesToPlay() {
+  private boolean noMatchesToPlay() {
     boolean matchesToPlayExists = matchManager.getFootballMatches()
         .stream()
         .anyMatch((m) -> m.getState() == MatchState.TO_PLAY);
 
     if (!matchesToPlayExists) {
       System.out.println("Sorry, but there are no matches to play");
-      organizeMatch();
+      return true;
     }
+    return false;
   }
 
   /**

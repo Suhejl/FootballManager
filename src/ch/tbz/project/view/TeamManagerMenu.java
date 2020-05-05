@@ -45,9 +45,6 @@ public class TeamManagerMenu implements IManagerMenu {
         Team team = inputTeamData();
         teamManager.createTeam(team);
         break;
-      case 2:
-        teamManager.organizeTeam();
-        break;
       case 0:
         return;
       default:
@@ -121,7 +118,6 @@ public class TeamManagerMenu implements IManagerMenu {
   private String optionsMenu() {
     return
         "[1] Create Team\n" +
-            "[2] Organize Team\n" +
             "[0] Exit";
   }
 }

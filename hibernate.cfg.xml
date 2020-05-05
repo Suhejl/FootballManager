@@ -29,7 +29,6 @@
         <property name="show_sql">false</property>
 
         <mapping resource="ch/tbz/project/hibernate/mapping/TrikotDesign.hbm.xml"/>
-<!--        <mapping class="ch.tbz.project.hibernate.model.Trikot"/>-->
         <mapping resource="ch/tbz/project/hibernate/mapping/Trikot.hbm.xml"/>
         <mapping resource="ch/tbz/project/hibernate/mapping/TrainingPlan.hbm.xml"/>
         <mapping resource="ch/tbz/project/hibernate/mapping/Boots.hbm.xml"/>

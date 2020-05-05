@@ -6,6 +6,7 @@ public enum Sponsor {
   ADIDAS,
   PLAYSTATION,
   XBOX,
+  FIFA,
   SKY,
   LG,
   COCA_COLA,
